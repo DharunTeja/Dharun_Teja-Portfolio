@@ -2,12 +2,57 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
+:root {
+  /* Dark mode values */
+  --bg-color: #020617;
+  --bg-color-alt: rgba(2, 6, 23, 0.5);
+  --text-primary: #f0f0f0;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-bg: #0b1329;
+  --card-item-bg: rgba(255, 255, 255, 0.03);
+  --card-item-border: rgba(255, 255, 255, 0.08);
+  --nav-bg: rgba(0, 0, 0, 0.8);
+  --footer-bg: #000000;
+  
+  --primary-color: #38bdf8;
+  --secondary-color: #ff4d4d;
+  --thirdary-color: #ff00cc;
+}
+
+:root.light {
+  /* Light mode values */
+  --bg-color: #f8fafc;
+  --bg-color-alt: rgba(241, 245, 249, 0.8);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --card-bg: #ffffff;
+  --card-item-bg: rgba(0, 0, 0, 0.03);
+  --card-item-border: rgba(0, 0, 0, 0.06);
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --footer-bg: #e2e8f0;
+  
+  --primary-color: #0284c7; /* darker blue for light mode readability */
+  --secondary-color: #dc2626; /* darker red */
+  --thirdary-color: #c084fc; /* purple/pink */
+}
+
 @theme {
+  /* Font */
   --font-sans: 'Outfit', sans-serif;
-  --color-primary: #00ffe5;
-  --color-secondary: #ff00cc;
-  --color-dark: #0d0d0d;
-  --color-glass: rgba(255, 255, 255, 0.05);
+  /* Colors */
+  --color-primary: var(--primary-color);
+  --color-secondary: var(--secondary-color);
+  --color-thirdary: var(--thirdary-color);
+  /* for background */
+  --color-dark: var(--bg-color);
+
+  --color-glass: var(--glass-bg);
 }
 
 html {
@@ -15,18 +60,104 @@ html {
 }
 
 body {
-  background-color: var(--color-dark);
-  color: #f0f0f0;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .glass-panel {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(90deg, var(--color-thirdary), var(--color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Global Light Mode CSS Overrides */
+:root.light {
+  /* Text elements mapping */
+  .text-gray-200, .text-gray-300, .text-white {
+    color: var(--text-primary) !important;
+  }
+  .text-gray-400 {
+    color: var(--text-secondary) !important;
+  }
+  .text-gray-500, .text-gray-600 {
+    color: var(--text-muted) !important;
+  }
+  
+  /* Background colors overrides */
+  .bg-black {
+    background-color: var(--footer-bg) !important;
+  }
+  .bg-black\/80 {
+    background-color: var(--nav-bg) !important;
+  }
+  .bg-black\/95 {
+    background-color: var(--nav-bg) !important;
+  }
+  .bg-black\/40 {
+    background-color: var(--glass-bg) !important;
+  }
+  .bg-black\/60 {
+    background-color: var(--footer-bg) !important;
+  }
+  .bg-gray-800, .bg-gray-800\/50, .bg-gray-800\/80 {
+    background-color: var(--card-item-bg) !important;
+  }
+  .bg-white\/5 {
+    background-color: var(--card-item-bg) !important;
+  }
+  .bg-dark\/50 {
+    background-color: var(--bg-color-alt) !important;
+  }
+  
+  /* Borders */
+  .border-gray-700, .border-gray-700\/50, .border-white\/10, .border-white\/5 {
+    border-color: var(--card-item-border) !important;
+  }
+  
+  /* Scroll to top & Primary buttons contrast adjustments */
+  .bg-primary.text-black {
+    color: #ffffff !important;
+  }
+  .fixed.bg-primary.text-black {
+    color: #ffffff !important;
+  }
+
+  /* Form controls styling */
+  input, textarea {
+    background-color: var(--bg-color-alt) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--card-item-border) !important;
+  }
+  input::placeholder, textarea::placeholder {
+    color: var(--text-muted) !important;
+  }
+  input:focus, textarea:focus {
+    border-color: var(--primary-color) !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--card-item-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }

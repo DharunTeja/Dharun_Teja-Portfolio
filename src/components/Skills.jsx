@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaReact, FaJs, FaPython, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub } from 'react-icons/fa';
-import { SiFirebase, SiSupabase, SiC } from 'react-icons/si';
+import { SiFirebase, SiSupabase, SiC, SiMysql, SiMongodb } from 'react-icons/si';
 
 const iconMap = {
     "React.js": <FaReact />,
@@ -13,7 +13,9 @@ const iconMap = {
     "Firebase": <SiFirebase />,
     "Supabase": <SiSupabase />,
     "Git": <FaGitAlt />,
-    "GitHub": <FaGithub />
+    "GitHub": <FaGithub />,
+    "MySQL": <SiMysql />,
+    "MongoDB": <SiMongodb />
 };
 
 const Skills = ({ data }) => {
@@ -21,7 +23,8 @@ const Skills = ({ data }) => {
         { title: "Languages", skills: data.skills?.languages || [], icon: "💻" },
         { title: "Frontend", skills: data.skills?.frontend || [], icon: "🎨" },
         { title: "Tools", skills: data.skills?.tools || [], icon: "🛠️" },
-        { title: "Backend / Cloud", skills: data.skills?.backend || [], icon: "☁️" }
+        { title: "Backend / Cloud", skills: data.skills?.backend || [], icon: "☁️" },
+        { title: "Database", skills: data.skills?.database || [], icon: "🗄️" }
     ];
 
     return (

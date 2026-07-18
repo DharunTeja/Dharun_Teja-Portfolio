@@ -38,9 +38,11 @@ const Hero = ({ data }) => {
                             sequence={[
                                 data.name,
                                 1000,
-                                "Dharun Teja",
+                                "C.R.DHARUN TEJA",
                                 1000,
-                                "Dharun",
+                                "DHARUN TEJA",
+                                1000,
+                                "DHARUN",
                                 1000,
                             ]}
                             wrapper="span"
@@ -59,7 +61,7 @@ const Hero = ({ data }) => {
                             onClick={handleResumeDownload}
                             className="px-8 py-3 bg-primary text-black font-bold rounded-full hover:bg-opacity-80 transition-all transform hover:scale-105 flex items-center gap-2"
                         >
-                            <FaDownload /> Resume
+                            <FaDownload /> My Resume
                         </button>
                         <a href="#contact" className="px-8 py-3 border border-gray-600 text-white rounded-full hover:border-primary hover:text-primary transition-all">
                             Contact Me

@@ -1,0 +1,217 @@
+You are an expert senior frontend engineer and UI/UX designer.
+
+Your task is to first COLLECT my portfolio information and then generate a modern, production-ready developer portfolio.
+
+The portfolio must be built using:
+
+• React (.jsx JavaScript)
+• TailwindCSS
+• Framer Motion for animations
+• 3D animations (using Three.js)
+• Fully responsive layout
+• Clean component structure
+• Modern developer portfolio design similar to top tech portfolios
+
+Before generating the portfolio, ask me the following questions in a structured format.
+
+Do NOT generate the website until all data is collected.
+
+---
+
+SECTION 1 — Personal Information
+
+Ask:
+
+Full Name: 
+Display Name (optional): 
+Professional Title (Example: Frontend Developer / AI Developer): AI & ML Developer
+Short Tagline: 
+Profile Photo URL:The photo will be in the assets folder.
+Location: 
+Email: 
+Phone (optional): 
+Resume PDF : Arrange a button so that it can be downloaded, I'll give the PDF in the assets folder.
+
+---
+
+SECTION 2 — About Me
+
+Ask:
+
+Q.) Write a detailed About Me description.
+A.) 
+
+
+Q.) What motivates you as a developer?
+A.) 
+
+Q.) What type of roles are you looking for?
+A.) 
+
+Q.) What makes you unique as a developer?
+A.) 
+
+---
+
+SECTION 3 — Skills
+
+Ask for skills categorized as:
+
+Programming Languages: 
+Frontend Tools: 
+Tools and Technologies: 
+
+---
+
+SECTION 4 — Projects
+
+Ask for multiple projects.
+
+For each project collect:
+
+Project Name
+Description
+Technologies Used
+Your Role
+Key Features
+GitHub Link
+Live Demo Link
+Screenshots (optional)
+
+---
+
+SECTION 5 — Experience
+
+For each experience ask:
+
+Company Name
+Role
+Start Date
+End Date
+Description
+Technologies Used
+
+---
+
+SECTION 6 — Education
+
+Degree
+Institution
+Start Year
+End Year
+Description
+
+---
+
+SECTION 7 — Achievements
+
+Hackathons
+Awards
+Certifications
+
+
+---
+
+SECTION 8 — Social Links
+
+GitHub : 
+LinkedIn : 
+
+(Use all the informationfrom the past files and make the new one.)
+---
+
+SECTION 9 — Design Preferences
+
+Preferred Theme Colors
+Dark Mode 
+Creative & Futuristic
+Animations Level (Advanced)
+
+---
+
+AFTER collecting all answers:
+
+Generate a COMPLETE developer portfolio project with the following requirements.
+
+---
+
+TECH STACK
+
+React (.jsx)
+TailwindCSS
+Framer Motion
+Three.js for 3D animations
+
+---
+
+PORTFOLIO SECTIONS
+
+Hero Section with animated intro
+3D animated background
+About Section
+Skills Section with animated skill cards
+Projects Section with hover effects
+Experience Timeline
+Education Section
+Achievements Section
+Contact Section with working form
+Footer with social links
+
+---
+
+ANIMATIONS
+
+Use Framer Motion for:
+
+page transitions
+scroll animations
+hover effects
+component entrances
+
+Use Three.js for:
+
+interactive 3D background (Use the AI & ML related objects)
+floating objects (Use the AI & ML related objects like robots, neurons,etc use the objects as much as possible and it should look clean,neat, attractive and futuristic.)
+animated hero visuals (Use the AI & ML related animations)
+
+---
+
+CODE STRUCTURE
+
+Generate a professional project structure:
+
+/src
+/components
+/sections
+/assets
+/hooks
+/animations
+/utils
+
+Files:
+
+Maintain the same file structure as the previous portfolio and also structure of the previous portfolio (I mean the portfolio structure should be same as the previous portfolio)
+
+---
+
+OUTPUT REQUIREMENTS
+
+Provide:
+
+1. Full React project code
+2. Component-based architecture
+3. Clean Tailwind styling
+4. Framer Motion animation examples
+5. 3D animation implementation
+6. Installation steps
+7. npm packages required
+8. How to deploy (Netlify)
+
+
+Ensure the portfolio looks modern, futuristic, and suitable for a professional software developer.
+
+Important :- 
+Remember : 1. "Make this portfolio as where I can update information about my projects, skills, experiences, education, achievements, and social links at only single place (i.e., app.jsx)."
+           2. "Don't update any information about me in app.jsx, I'll update it."
+           3. "Don't use any dummy information, Use the information from the present app.jsx file."
+            

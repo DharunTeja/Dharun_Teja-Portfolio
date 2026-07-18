@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaUniversity, FaSchool } from 'react-icons/fa';
+import { FaGraduationCap, FaUniversity, FaSchool, FaAward } from 'react-icons/fa';
 
 const Education = ({ data }) => {
     const getIcon = (index) => {
@@ -16,6 +16,15 @@ const Education = ({ data }) => {
             "from-orange-500 to-red-500"
         ];
         return gradients[index % gradients.length];
+    };
+
+    const getGlowColor = (index) => {
+        const glows = [
+            "rgba(6, 182, 212, 0.5)",  // cyan
+            "rgba(236, 72, 153, 0.5)",  // pink
+            "rgba(249, 115, 22, 0.5)"   // orange
+        ];
+        return glows[index % glows.length];
     };
 
     return (
@@ -110,6 +119,38 @@ const Education = ({ data }) => {
                                                 <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${getGradient(index)}`}></div>
                                                 <span className="text-sm md:text-base">{edu.duration}</span>
                                             </div>
+
+                                            {/* GPA with Animated Progress Bar */}
+                                            {edu.gpa && (() => {
+                                                const match = edu.gpa.match(/^([\d.]+)/);
+                                                const score = match ? parseFloat(match[1]) : 0;
+                                                const percent = Math.min(Math.max((score / 10) * 100, 0), 100);
+
+                                                return (
+                                                    <div className="mt-6 w-full max-w-[320px] relative z-10">
+                                                        <div className="flex justify-between items-end mb-2 select-none">
+                                                            <span className="text-[10px] tracking-widest uppercase font-extrabold text-gray-500">
+                                                                GPA
+                                                            </span>
+                                                            <span className="text-white text-sm font-black tracking-wide">
+                                                                {edu.gpa}
+                                                            </span>
+                                                        </div>
+                                                        <div className="h-2 w-full bg-white/5 border border-white/10 rounded-full overflow-hidden relative shadow-[inset_0_1px_4px_rgba(0,0,0,0.4)]">
+                                                            <motion.div
+                                                                initial={{ width: 0 }}
+                                                                whileInView={{ width: `${percent}%` }}
+                                                                viewport={{ once: true }}
+                                                                transition={{ duration: 1.2, ease: "easeOut" }}
+                                                                className={`h-full bg-gradient-to-r ${getGradient(index)} rounded-full`}
+                                                                style={{
+                                                                    boxShadow: `0 0 10px 1px ${getGlowColor(index)}`
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })()}
 
                                             {/* Decorative line */}
                                             <div className={`w-16 h-1 bg-gradient-to-r ${getGradient(index)} rounded-full mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>

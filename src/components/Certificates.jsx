@@ -25,7 +25,7 @@ const Certificates = ({ data }) => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                        <span className="text-primary">Certifications</span> & Achievements
+                        <span className="text-primary">My </span>Certifications
                     </h2>
                     <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
                 </motion.div>
