@@ -87,60 +87,71 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-black/80 backdrop-blur-md py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-black/80 backdrop-blur-md py-3 shadow-lg'
+          : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
-        {/* Logo */}
-        <a
-          href="#hero"
-          onClick={(e) => {
-            e.preventDefault();
-            handleNavClick('hero');
-          }}
-          className="text-2xl font-bold text-primary tracking-tight shrink-0"
-        >
-          PORTFOLIO
-        </a>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col gap-3">
+        {/* 1st row: Portfolio (left) and Full Name (right) */}
+        <div className="flex items-center justify-between border-b border-white/10 pb-2">
+          {/* Logo */}
+          <a
+            href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('hero');
+            }}
+            className="text-xl md:text-2xl font-bold text-primary tracking-tight shrink-0 transition-transform duration-300 hover:scale-105"
+          >
+            PORTFOLIO
+          </a>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex flex-1 justify-end ml-12">
-          <ul className="flex items-center gap-4 lg:gap-6">
-            {navLinks.map((link) => (
-              <li key={link.id}>
-                <button
-                  onClick={() => handleNavClick(link.id)}
-                  className={`text-[10px] lg:text-[13px] uppercase tracking-[0.08em] font-medium transition-colors whitespace-nowrap ${
-                    activeSection === link.id
-                      ? 'text-orange-400'
-                      : 'text-gray-300 hover:text-primary'
-                  }`}
-                >
-                  {link.name}
-                </button>
-              </li>
-            ))}
-          </ul>
+          {/* Full Name */}
+          <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-wider text-gray-300 uppercase select-none">
+            CARINGULA RATHAN DHARUN TEJA
+          </span>
         </div>
 
-        {/* Actions (Theme Toggle & Mobile Menu Toggle) */}
-        <div className="flex items-center gap-4 ml-4 md:ml-6 shrink-0">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer text-sm md:text-base"
-            aria-label="Toggle Theme"
-          >
-            {theme === 'dark' ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-sky-900" />}
-          </button>
+        {/* 2nd row: Navbar Section Links & Actions */}
+        <div className="flex items-center justify-between">
+          {/* Desktop Links */}
+          <div className="hidden md:flex flex-1 justify-start">
+            <ul className="flex items-center gap-4 lg:gap-6">
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <button
+                    onClick={() => handleNavClick(link.id)}
+                    className={`text-[10px] lg:text-[13px] uppercase tracking-[0.08em] font-medium transition-colors whitespace-nowrap ${
+                      activeSection === link.id
+                        ? 'text-orange-400 font-semibold'
+                        : 'text-gray-300 hover:text-primary'
+                    }`}
+                  >
+                    {link.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <button
-            className="md:hidden text-white text-2xl flex items-center"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </button>
+          {/* Actions (Theme Toggle & Mobile Menu Toggle) */}
+          <div className="flex items-center gap-4 ml-auto shrink-0">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer text-sm md:text-base"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-sky-900" />}
+            </button>
+
+            <button
+              className="md:hidden text-white text-2xl flex items-center"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -152,7 +163,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/95 backdrop-blur-xl overflow-hidden"
+            className="md:hidden bg-black/95 backdrop-blur-xl overflow-hidden mt-3"
           >
             <ul className="flex flex-col items-center py-8 space-y-6">
               {navLinks.map((link) => (
