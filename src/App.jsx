@@ -29,6 +29,7 @@ import forgeImg from './assets/forgeascend.png';
 import smartDocImg from './assets/SmartDoc.png';
 import nspImg from './assets/nsp.png';
 import burnoutImg from './assets/burnout-datathoon.png';
+import floatchatImg from './assets/floatchat.png';
 import galleryImg1 from './assets/gallery/SIH-2023/sih1.jpg';
 import galleryImg2 from './assets/gallery/SIH-2023/sih2.jpg';
 import galleryImg3 from './assets/gallery/SIH-2023/sih3.jpg';
@@ -57,6 +58,7 @@ import sihVideo3 from './assets/gallery/SIH-2025/sihv3.mp4';
 import sihVideo4 from './assets/gallery/SIH-2025/sihv4.mp4';
 import sihVideo5_2 from './assets/gallery/SIH-2025/sihv5.mp4';
 import sihVideo6 from './assets/gallery/SIH-2025/sihv6.mp4';
+import { title } from 'framer-motion/client';
 
 function App() {
   // ==============================================================================================
@@ -141,6 +143,14 @@ function App() {
     // --------------------------------------------------------------------------------------------
     // Add your projects here. Ensure images are imported at the top.
     projects: [
+      {
+        title: "FloatChat",
+        description: "FloatChat is an AI-powered ocean intelligence platform that transforms Argo float and NetCDF oceanographic data into actionable insights. It combines data ingestion, vector search, MCP orchestration, and conversational analytics to help researchers, policymakers, and coastal stakeholders monitor ocean conditions, trends, and environmental change.",
+        image: floatchatImg,
+        tech: ["React(TypeScript)","Python","PostgreSQL","FAISS","NetCDF4","Pandas","JWT","BCrypt"],
+        github: "https://github.com/DharunTeja/FloatChat",
+        demo: "https://floatchat-portal.netlify.app/"
+      },
       {
         title: "EduInsight AI",
         description: "EduInsight AI is an intelligent learning platform designed to personalize education for every student. It combines AI-driven content delivery, adaptive assessments, and real-time progress tracking to create a seamless and effective learning experience. Whether you're preparing for exams or mastering new skills, EduInsight AI adapts to your unique learning style and pace.",
@@ -247,9 +257,16 @@ function App() {
         year: "2023"
       }
     ],
-    // 5b. ACHIEVEMENTS
-    // --------------------------------------------------------------------------------------------
     achievements: [
+      {
+        title: "Prompt 2 Product 2026 | Internal College Hackathon ( WINNER )",
+        role: "Winner",
+        date: "February 2026",
+        description: [
+          "Won first place in the Prompt 2 Product 2026 Internal College Hackathon.",
+          "Recognized for building an innovative product using prompt engineering and AI development principles."
+        ]
+      },
       {
         title: "Web Development Workshop – CODE VIVEKS CLUB",
         role: "Workshop Instructor",
@@ -304,11 +321,10 @@ function App() {
     // --------------------------------------------------------------------------------------------
     // Skills organized by categories
     skills: {
-      languages: ["C", "Java", "Python", "JavaScript"],
-      frontend: ["HTML", "CSS", "React.js"],
-      tools: ["Git", "GitHub"],
-      backend: ["Firebase", "Supabase"],
-      database: ["MySQL", "MongoDB"]
+      programmingLanguages: ["Python", "C", "SQL", "JavaScript"],
+      webTechnologies: ["HTML5", "CSS3", "React.js", "Node.js", "WordPress", "Supabase", "Firebase", "Responsive Web Design", "Web Scraping"],
+      aiMlDataScience: ["Machine Learning", "OCR", "OpenCV", "Pandas", "NumPy", "XGBoost", "Data Analysis", "Predictive Modeling"],
+      developerTools: ["Git", "GitHub", "Figma", "Vercel", "Netlify", "Render"]
     },
     // 8. CERTIFICATIONS
     // --------------------------------------------------------------------------------------------

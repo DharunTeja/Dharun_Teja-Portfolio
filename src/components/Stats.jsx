@@ -73,18 +73,16 @@ const Stats = ({ data }) => {
   };
 
   // --- SKILLS COUNTS ---
-  const languagesCount = data.skills?.languages?.length || 0;
-  const frontendCount = data.skills?.frontend?.length || 0;
-  const toolsCount = data.skills?.tools?.length || 0;
-  const backendCount = data.skills?.backend?.length || 0;
-  const databaseCount = data.skills?.database?.length || 0;
+  const languagesCount = data.skills?.programmingLanguages?.length || 0;
+  const webTechnologiesCount = data.skills?.webTechnologies?.length || 0;
+  const aiMlDataScienceCount = data.skills?.aiMlDataScience?.length || 0;
+  const developerToolsCount = data.skills?.developerTools?.length || 0;
 
   const totalSkills =
     languagesCount +
-    frontendCount +
-    toolsCount +
-    backendCount +
-    databaseCount;
+    webTechnologiesCount +
+    aiMlDataScienceCount +
+    developerToolsCount;
 
   // --- OTHER COUNTS ---
   const experienceCount = data.experience?.length || 0;

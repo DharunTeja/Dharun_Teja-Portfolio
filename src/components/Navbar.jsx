@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const navLinks = [
   { name: 'Home', id: 'hero' },
@@ -20,23 +20,11 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
-  });
-
-  // Theme synchronization
+  // Clean up any remaining light mode class or localStorage setting
   useEffect(() => {
-    if (theme === 'light') {
-      document.documentElement.classList.add('light');
-    } else {
-      document.documentElement.classList.remove('light');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
+    document.documentElement.classList.remove('light');
+    localStorage.removeItem('theme');
+  }, []);
 
   // Scroll detection
   useEffect(() => {
@@ -134,16 +122,8 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Actions (Theme Toggle & Mobile Menu Toggle) */}
+          {/* Actions (Mobile Menu Toggle) */}
           <div className="flex items-center gap-4 ml-auto shrink-0">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer text-sm md:text-base"
-              aria-label="Toggle Theme"
-            >
-              {theme === 'dark' ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-sky-900" />}
-            </button>
-
             <button
               className="md:hidden text-white text-2xl flex items-center"
               onClick={() => setIsOpen(!isOpen)}

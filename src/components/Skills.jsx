@@ -1,30 +1,55 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaJs, FaPython, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub } from 'react-icons/fa';
-import { SiFirebase, SiSupabase, SiC, SiMysql, SiMongodb } from 'react-icons/si';
 
-const iconMap = {
-    "React.js": <FaReact />,
-    "JavaScript": <FaJs />,
-    "Python": <FaPython />,
-    "C": <SiC />,
-    "HTML": <FaHtml5 />,
-    "CSS": <FaCss3Alt />,
-    "Firebase": <SiFirebase />,
-    "Supabase": <SiSupabase />,
-    "Git": <FaGitAlt />,
-    "GitHub": <FaGithub />,
-    "MySQL": <SiMysql />,
-    "MongoDB": <SiMongodb />
+const categoryStyles = {
+    "Programming Languages": {
+        borderHover: "hover:border-sky-500/50",
+        iconBg: "group-hover:bg-sky-500/10",
+        iconBorder: "border-white/10 group-hover:border-sky-500/50",
+        badgeHover: "hover:text-sky-400 hover:border-sky-500/30 hover:bg-sky-500/5",
+        accent: "from-sky-500 to-blue-600",
+        shadow: "hover:shadow-[0_0_30px_rgba(56,189,248,0.15)]",
+        divider: "from-sky-500/30",
+        textPrimary: "group-hover:text-sky-400",
+    },
+    "Web Technologies": {
+        borderHover: "hover:border-rose-500/50",
+        iconBg: "group-hover:bg-rose-500/10",
+        iconBorder: "border-white/10 group-hover:border-rose-500/50",
+        badgeHover: "hover:text-rose-400 hover:border-rose-500/30 hover:bg-rose-500/5",
+        accent: "from-rose-500 to-red-600",
+        shadow: "hover:shadow-[0_0_30px_rgba(244,63,94,0.15)]",
+        divider: "from-rose-500/30",
+        textPrimary: "group-hover:text-rose-400",
+    },
+    "AI/ML & Data Science": {
+        borderHover: "hover:border-emerald-500/50",
+        iconBg: "group-hover:bg-emerald-500/10",
+        iconBorder: "border-white/10 group-hover:border-emerald-500/50",
+        badgeHover: "hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5",
+        accent: "from-emerald-500 to-teal-600",
+        shadow: "hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]",
+        divider: "from-emerald-500/30",
+        textPrimary: "group-hover:text-emerald-400",
+    },
+    "Developer Tools": {
+        borderHover: "hover:border-violet-500/50",
+        iconBg: "group-hover:bg-violet-500/10",
+        iconBorder: "border-white/10 group-hover:border-violet-500/50",
+        badgeHover: "hover:text-violet-400 hover:border-violet-500/30 hover:bg-violet-500/5",
+        accent: "from-violet-500 to-purple-600",
+        shadow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.15)]",
+        divider: "from-violet-500/30",
+        textPrimary: "group-hover:text-violet-400",
+    }
 };
 
 const Skills = ({ data }) => {
     const skillCategories = [
-        { title: "Languages", skills: data.skills?.languages || [], icon: "💻" },
-        { title: "Frontend", skills: data.skills?.frontend || [], icon: "🎨" },
-        { title: "Tools", skills: data.skills?.tools || [], icon: "🛠️" },
-        { title: "Backend / Cloud", skills: data.skills?.backend || [], icon: "☁️" },
-        { title: "Database", skills: data.skills?.database || [], icon: "🗄️" }
+        { title: "Programming Languages", skills: data.skills?.programmingLanguages || [], icon: "💻" },
+        { title: "Web Technologies", skills: data.skills?.webTechnologies || [], icon: "🌐" },
+        { title: "AI/ML & Data Science", skills: data.skills?.aiMlDataScience || [], icon: "🧠" },
+        { title: "Developer Tools", skills: data.skills?.developerTools || [], icon: "🛠️" }
     ];
 
     return (
@@ -42,75 +67,61 @@ const Skills = ({ data }) => {
                     <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
                 </motion.div>
 
-                <div className="space-y-8 max-w-7xl mx-auto">
-                    {skillCategories.map((category, categoryIndex) => (
-                        <motion.div
-                            key={category.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: categoryIndex * 0.2 }}
-                            className="relative"
-                        >
-                            {/* Category Label */}
-                            <div className="flex items-center gap-3 mb-6">
-                                <span className="text-3xl">{category.icon}</span>
-                                <h3 className="text-2xl font-bold">
-                                    <span className="text-primary">{category.title}</span>
-                                </h3>
-                                <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent"></div>
-                            </div>
-
-                            {/* Skills Container - Horizontal Scroll on Mobile */}
-                            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide md:overflow-visible md:grid md:grid-cols-3 lg:grid-cols-4">
-                                {category.skills.map((skill, index) => (
-                                    <motion.div
-                                        key={skill}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ 
-                                            delay: (categoryIndex * 0.2) + (index * 0.1),
-                                            type: "spring",
-                                            stiffness: 100
-                                        }}
-                                        whileHover={{ 
-                                            y: -8,
-                                            transition: { duration: 0.2 }
-                                        }}
-                                        className="flex-shrink-0 min-w-[140px] md:min-w-0"
-                                    >
-                                        <div className="glass-panel rounded-2xl p-6 text-center border border-gray-700/50 hover:border-primary/50 transition-all duration-300 group cursor-pointer h-full">
-                                            {/* Icon with animated background */}
-                                            <div className="relative mb-4">
-                                                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
-                                                <div className="relative w-20 h-20 mx-auto bg-gray-800 rounded-2xl flex items-center justify-center text-4xl text-primary group-hover:text-secondary group-hover:scale-110 transition-all duration-300 border border-gray-700 group-hover:border-primary/50">
-                                                    {iconMap[skill] || <FaReact />}
-                                                </div>
+                {/* Responsive Category Grid */}
+                <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
+                    {skillCategories.map((category, categoryIndex) => {
+                        const style = categoryStyles[category.title] || categoryStyles["Programming Languages"];
+                        return (
+                            <motion.div
+                                key={category.title}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: categoryIndex * 0.1 }}
+                                whileHover={{ y: -6 }}
+                                className="w-full md:w-[calc(50%-12px)] flex-grow-0 group"
+                            >
+                                <div className={`glass-panel p-6 md:p-8 rounded-3xl border border-gray-700/50 ${style.borderHover} ${style.shadow} transition-all duration-300 h-full flex flex-col justify-between`}>
+                                    <div>
+                                        {/* Category Header: Icon & Title */}
+                                        <div className="flex items-center gap-4 mb-6">
+                                            <div className={`w-12 h-12 rounded-2xl bg-white/5 border ${style.iconBorder} ${style.iconBg} flex items-center justify-center text-2xl transition-all duration-300 shrink-0`}>
+                                                {category.icon}
                                             </div>
-                                            
-                                            {/* Skill Name */}
-                                            <h4 className="font-bold text-lg text-gray-200 group-hover:text-primary transition-colors">
-                                                {skill}
-                                            </h4>
+                                            <div>
+                                                <h3 className={`text-xl font-bold text-gray-100 ${style.textPrimary} transition-colors duration-300`}>
+                                                    {category.title}
+                                                </h3>
+                                                <span className="text-xs text-gray-400 font-medium select-none">
+                                                    {category.skills.length} {category.skills.length === 1 ? 'Skill' : 'Skills'}
+                                                </span>
+                                            </div>
                                         </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
+
+                                        {/* Decorative Divider */}
+                                        <div className={`h-px bg-gradient-to-r ${style.divider} to-transparent mb-6`}></div>
+
+                                        {/* Skills Badge Container */}
+                                        <div className="flex flex-wrap gap-2.5">
+                                            {category.skills.map((skill) => (
+                                                <div
+                                                    key={skill}
+                                                    className={`bg-white/5 border border-white/5 rounded-xl py-2 px-4 text-sm font-medium text-gray-300 ${style.badgeHover} transition-all duration-300 cursor-default select-none whitespace-nowrap`}
+                                                >
+                                                    {skill}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Bottom Accent Detail */}
+                                    <div className={`w-12 h-1 bg-gradient-to-r ${style.accent} rounded-full mt-8 opacity-20 group-hover:opacity-100 group-hover:w-20 transition-all duration-300`}></div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
-
-            <style jsx>{`
-                .scrollbar-hide::-webkit-scrollbar {
-                    display: none;
-                }
-                .scrollbar-hide {
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
-                }
-            `}</style>
         </section>
     );
 };

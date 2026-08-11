@@ -92,16 +92,53 @@ const Achievements = ({ data }) => {
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">
                         Key <span className="text-green-400">Achievements</span>
                     </h2>
-                    <div className="w-20 h-1 bg-gradient-to-r from-green-500 to-emerald-400 mx-auto rounded-full"></div>
+                    <div className="w-20 h-1 bg-gradient-to-r from-green-500 to-emerald-400 mx-auto rounded-full mb-12"></div>
+                    
+                    {/* Announcement Banner */}
+                    <div className="w-full max-w-4xl mx-auto mb-16">
+                        <div className="relative group overflow-hidden rounded-3xl p-[1px] bg-gradient-to-r from-green-500 via-emerald-400 to-teal-500 shadow-[0_0_30px_rgba(34,197,94,0.15)] hover:shadow-[0_0_45px_rgba(34,197,94,0.25)] transition-all duration-300">
+                            {/* Animated light rays inside border */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-400 to-teal-500 opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+                            
+                            {/* Inner Card content */}
+                            <div className="relative bg-gray-950/90 backdrop-blur-md rounded-[23px] px-6 py-6 md:py-8 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6 border border-white/5">
+                                {/* Announcement Tag + Headline */}
+                                <div className="flex items-center gap-5 text-center md:text-left flex-col md:flex-row">
+                                    <div className="w-16 h-16 rounded-2xl bg-green-500/10 border border-green-500/30 flex items-center justify-center text-4xl animate-bounce shrink-0 shadow-[0_0_20px_rgba(34,197,94,0.2)]">
+                                        🏆
+                                    </div>
+                                    <div>
+                                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-bold uppercase tracking-wider mb-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                                            Announcement
+                                        </div>
+                                        <h3 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                                            Prompt 2 Product 2026
+                                        </h3>
+                                        <p className="text-gray-300 mt-1 font-medium text-sm md:text-base">
+                                            Internal College Hackathon Winner
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                {/* Callout Badge */}
+                                <div className="shrink-0">
+                                    <span className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-400 text-black font-extrabold text-sm md:text-base uppercase tracking-wider shadow-lg hover:scale-105 transition-transform duration-300 select-none">
+                                        🏆 WINNER 🏆
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </motion.div>
 
                 <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2 items-stretch">
                     {/* Column 1: Workshop */}
-                    {data[0] && (
+                    {data[1] && (
                         <div className="h-full">
                             <AchievementCard 
-                                achievement={data[0]} 
-                                index={0} 
+                                achievement={data[1]} 
+                                index={1} 
                                 shouldReduceMotion={shouldReduceMotion} 
                             />
                         </div>
@@ -109,20 +146,20 @@ const Achievements = ({ data }) => {
 
                     {/* Column 2: SIH & Vibe Hack stacked */}
                     <div className="flex flex-col gap-8 h-full">
-                        {data[1] && (
-                            <div className="flex-1">
-                                <AchievementCard 
-                                    achievement={data[1]} 
-                                    index={1} 
-                                    shouldReduceMotion={shouldReduceMotion} 
-                                />
-                            </div>
-                        )}
                         {data[2] && (
                             <div className="flex-1">
                                 <AchievementCard 
                                     achievement={data[2]} 
                                     index={2} 
+                                    shouldReduceMotion={shouldReduceMotion} 
+                                />
+                            </div>
+                        )}
+                        {data[3] && (
+                            <div className="flex-1">
+                                <AchievementCard 
+                                    achievement={data[3]} 
+                                    index={3} 
                                     shouldReduceMotion={shouldReduceMotion} 
                                 />
                             </div>
