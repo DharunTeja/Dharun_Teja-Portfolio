@@ -1,19 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { FaDownload } from 'react-icons/fa';
 import profileImg from '../assets/Hero_Image.png';
-import resumePdf from '../assets/dharunteja_resume.pdf';
 
 const Hero = ({ data }) => {
-    const handleResumeDownload = () => {
-        const link = document.createElement('a');
-        link.href = resumePdf;
-        link.download = 'Dharun_Teja_Resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
+    const [isHovered, setIsHovered] = useState(false);
 
     return (
         <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
@@ -57,12 +48,38 @@ const Hero = ({ data }) => {
                         {data.tagline}
                     </h2>
                     <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <button
-                            onClick={handleResumeDownload}
+                        <a
+                            href="https://drive.google.com/file/d/18moai8QZzxZcKPX6rXk5UijrmKPQ1Ied/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
                             className="px-8 py-3 bg-primary text-black font-bold rounded-full hover:bg-opacity-80 transition-all transform hover:scale-105 flex items-center gap-2"
                         >
-                            <FaDownload /> My Resume
-                        </button>
+                            <svg 
+                                viewBox="0 0 24 24" 
+                                width="20" 
+                                height="20" 
+                                className="fill-none stroke-current" 
+                                strokeWidth="2" 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round"
+                            >
+                                <motion.circle
+                                    cx="12"
+                                    cy="12"
+                                    r="3"
+                                    fill="currentColor"
+                                    animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                                    transition={{ duration: 0.25, ease: "easeOut" }}
+                                />
+                                <motion.path
+                                    animate={isHovered ? { d: "M 2 12 Q 12 3 22 12 Q 12 21 2 12" } : { d: "M 2 12 Q 12 12 22 12 Q 12 12 2 12" }}
+                                    transition={{ duration: 0.25, ease: "easeOut" }}
+                                />
+                            </svg>
+                            View Resume
+                        </a>
                         <a href="#contact" className="px-8 py-3 border border-gray-600 text-white rounded-full hover:border-primary hover:text-primary transition-all">
                             Contact Me
                         </a>

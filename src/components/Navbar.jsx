@@ -59,16 +59,27 @@ const Navbar = () => {
 
   // Smooth scroll handler
   const handleNavClick = (id) => {
-    const element = document.getElementById(id);
-
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+    if (isOpen) {
+      setIsOpen(false);
+      // Wait for the mobile menu collapse transition (300ms) to complete so page layout is stable
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+      }, 300);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
     }
-
-    setIsOpen(false);
   };
 
   return (
@@ -103,7 +114,7 @@ const Navbar = () => {
         {/* 2nd row: Navbar Section Links & Actions */}
         <div className="flex items-center justify-between">
           {/* Desktop Links */}
-          <div className="hidden md:flex flex-1 justify-start">
+          <div className="hidden md:flex flex-1 justify-center">
             <ul className="flex items-center gap-4 lg:gap-6">
               {navLinks.map((link) => (
                 <li key={link.id}>

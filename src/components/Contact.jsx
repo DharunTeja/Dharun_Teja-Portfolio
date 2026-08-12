@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaBolt, FaPaperPlane, FaSpinner } from 'react-icons/fa';
-import resumePdf from '../assets/dharunteja_resume.pdf';
-
 const Contact = ({ data }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -16,16 +14,6 @@ const Contact = ({ data }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleResumeDownload = (e) => {
-        e.preventDefault();
-        const link = document.createElement('a');
-        link.href = resumePdf;
-        link.download = 'Dharun_Teja_Resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
     };
 
     const handleSubmit = async (e) => {
@@ -242,17 +230,18 @@ const Contact = ({ data }) => {
                                 <span>Currently Available</span>
                             </div>
                             <p className="text-xs text-gray-400 leading-relaxed font-medium">
-                                Open to AI Engineer, Data Science, and Web Development internship opportunities.
+                                Seeking opportunities in AI/ML Engineering, Data Science, and Software Development to apply my skills in machine learning, web technologies, and intelligent system development.
                             </p>
                         </div>
 
-                        {/* Resume Download Link */}
+                        {/* Resume View Link */}
                         <a
-                            href="#resume"
-                            onClick={handleResumeDownload}
+                            href="https://drive.google.com/file/d/18moai8QZzxZcKPX6rXk5UijrmKPQ1Ied/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="mt-4 text-center text-xs font-semibold text-gray-400 uppercase tracking-widest hover:text-primary transition-colors cursor-pointer underline underline-offset-8"
                         >
-                            My Resume
+                            View Resume
                         </a>
                     </div>
                 </div>
