@@ -54,30 +54,36 @@ const Hero = ({ data }) => {
                             rel="noopener noreferrer"
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
-                            className="px-8 py-3 bg-primary text-black font-bold rounded-full hover:bg-opacity-80 transition-all transform hover:scale-105 flex items-center gap-2"
+                            className="px-8 py-3 bg-primary text-black font-bold rounded-full hover:bg-opacity-80 transition-all transform hover:scale-105 flex items-center"
                         >
-                            <svg 
-                                viewBox="0 0 24 24" 
-                                width="20" 
-                                height="20" 
-                                className="fill-none stroke-current" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round"
+                            <motion.span
+                                animate={isHovered ? { width: 20, opacity: 1, marginRight: 8 } : { width: 0, opacity: 0, marginRight: 0 }}
+                                transition={{ duration: 0.25, ease: "easeInOut" }}
+                                style={{ overflow: 'hidden', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
                             >
-                                <motion.circle
-                                    cx="12"
-                                    cy="12"
-                                    r="3"
-                                    fill="currentColor"
-                                    animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                                    transition={{ duration: 0.25, ease: "easeOut" }}
-                                />
-                                <motion.path
-                                    animate={isHovered ? { d: "M 2 12 Q 12 3 22 12 Q 12 21 2 12" } : { d: "M 2 12 Q 12 12 22 12 Q 12 12 2 12" }}
-                                    transition={{ duration: 0.25, ease: "easeOut" }}
-                                />
-                            </svg>
+                                <svg 
+                                    viewBox="0 0 24 24" 
+                                    width="20" 
+                                    height="20" 
+                                    className="fill-none stroke-current" 
+                                    strokeWidth="2" 
+                                    strokeLinecap="round" 
+                                    strokeLinejoin="round"
+                                >
+                                    <motion.circle
+                                        cx="12"
+                                        cy="12"
+                                        r="3"
+                                        fill="currentColor"
+                                        animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                                        transition={{ duration: 0.25, ease: "easeOut" }}
+                                    />
+                                    <motion.path
+                                        animate={isHovered ? { d: "M 2 12 Q 12 3 22 12 Q 12 21 2 12" } : { d: "M 2 12 Q 12 12 22 12 Q 12 12 2 12" }}
+                                        transition={{ duration: 0.25, ease: "easeOut" }}
+                                    />
+                                </svg>
+                            </motion.span>
                             View Resume
                         </a>
                         <a href="#contact" className="px-8 py-3 border border-gray-600 text-white rounded-full hover:border-primary hover:text-primary transition-all">
